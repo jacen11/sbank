@@ -9,8 +9,7 @@ import javax.validation.Valid;
 @RestController
 public class TransferController {
 
-    final
-    TransferService transferService;
+    private final TransferService transferService;
 
     public TransferController(TransferService transferService) {
         this.transferService = transferService;

@@ -11,5 +11,6 @@ import javax.validation.constraints.NotNull
 data class Account(
         @field:NotBlank val name: String,
         @field:NotNull val number: String,
+        @field:NotNull val currency: Currency,
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long? = null)
