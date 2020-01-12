@@ -1,4 +1,4 @@
-package com.sbank.sbank.model
+package com.sbank.model
 
 import java.math.BigDecimal
 import javax.persistence.*

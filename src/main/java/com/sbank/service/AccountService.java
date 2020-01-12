@@ -1,7 +1,6 @@
-package com.sbank.sbank.service;
+package com.sbank.service;
 
-import com.sbank.sbank.model.Account;
-import com.sbank.sbank.model.Transfer;
+import com.sbank.model.Account;
 import org.springframework.stereotype.Service;
 
 @Service

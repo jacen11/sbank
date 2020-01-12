@@ -1,9 +1,9 @@
-package com.sbank.sbank.service;
+package com.sbank.service;
 
-import com.sbank.sbank.model.User;
-import com.sbank.sbank.model.web.WebUser;
-import com.sbank.sbank.repostory.ClientRepository;
-import com.sbank.sbank.service.UserService;
+import com.sbank.model.User;
+import com.sbank.model.web.WebUser;
+import com.sbank.repostory.ClientRepository;
+import com.sbank.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service

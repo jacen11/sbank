@@ -1,7 +1,7 @@
-package com.sbank.sbank.service;
+package com.sbank.service;
 
-import com.sbank.sbank.model.User;
-import com.sbank.sbank.model.web.WebUser;
+import com.sbank.model.User;
+import com.sbank.model.web.WebUser;
 import org.springframework.stereotype.Service;
 
 @Service

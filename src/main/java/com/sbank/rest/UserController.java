@@ -1,8 +1,8 @@
-package com.sbank.sbank.rest;
+package com.sbank.rest;
 
-import com.sbank.sbank.model.User;
-import com.sbank.sbank.model.web.WebUser;
-import com.sbank.sbank.service.UserService;
+import com.sbank.model.User;
+import com.sbank.model.web.WebUser;
+import com.sbank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,8 @@
-package com.sbank.sbank.service;
+package com.sbank.service;
 
-import com.sbank.sbank.model.Transfer;
-import com.sbank.sbank.repostory.TransferRepository;
-import com.sbank.sbank.service.TransferService;
+import com.sbank.model.Transfer;
+import com.sbank.repostory.TransferRepository;
+import com.sbank.service.TransferService;
 import org.springframework.stereotype.Service;
 
 @Service

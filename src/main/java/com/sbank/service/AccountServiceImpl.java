@@ -1,7 +1,7 @@
-package com.sbank.sbank.service;
+package com.sbank.service;
 
-import com.sbank.sbank.model.Account;
-import com.sbank.sbank.repostory.AccountRepository;
+import com.sbank.model.Account;
+import com.sbank.repostory.AccountRepository;
 import org.springframework.stereotype.Service;
 
 @Service

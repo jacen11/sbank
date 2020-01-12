@@ -1,6 +1,6 @@
-package com.sbank.sbank.model;
+package com.sbank.model;
 
-import com.sbank.sbank.model.web.WebUser;
+import com.sbank.model.web.WebUser;
 import ma.glasnost.orika.Converter;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;

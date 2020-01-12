@@ -1,7 +1,7 @@
-package com.sbank.sbank.rest;
+package com.sbank.rest;
 
-import com.sbank.sbank.model.Account;
-import com.sbank.sbank.service.AccountService;
+import com.sbank.model.Account;
+import com.sbank.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +25,12 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account createAccount(Account account){
+    public Account createAccount(@RequestBody Account account){
         return accountService.createAccount(account);
     }
 
     @PutMapping
-    public Account updateAccount(Account account){
+    public Account updateAccount(@RequestBody Account account){
         return accountService.updateAccount(account);
     }
 }

@@ -1,7 +1,7 @@
-package com.sbank.sbank.rest;
+package com.sbank.rest;
 
-import com.sbank.sbank.model.Transfer;
-import com.sbank.sbank.service.TransferService;
+import com.sbank.model.Transfer;
+import com.sbank.service.TransferService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

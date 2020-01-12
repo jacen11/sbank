@@ -1,4 +1,4 @@
-package com.sbank.sbank.model;
+package com.sbank.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;

@@ -1,7 +1,6 @@
-package com.sbank.sbank.repostory;
+package com.sbank.repostory;
 
-import com.sbank.sbank.model.Account;
-import com.sbank.sbank.model.User;
+import com.sbank.model.Account;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

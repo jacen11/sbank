@@ -1,4 +1,4 @@
-package com.sbank.sbank;
+package com.sbank;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

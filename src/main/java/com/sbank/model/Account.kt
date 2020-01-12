@@ -1,4 +1,4 @@
-package com.sbank.sbank.model
+package com.sbank.model
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
