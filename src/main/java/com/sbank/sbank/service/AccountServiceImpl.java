@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountServiceImpl implements AccountService {
 
-
     private final AccountRepository repo;
 
     public AccountServiceImpl(AccountRepository repo) {
@@ -16,6 +15,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account createAccount(Account account) {
+        return repo.save(account);
+    }
+
+    @Override
+    public Account updateAccount(Account account) {
         return repo.save(account);
     }
 
