@@ -1,7 +1,7 @@
 package com.sbank.service;
 
 import com.sbank.model.User;
-import com.sbank.model.web.WebUser;
+import com.sbank.model.User;
 import com.sbank.repostory.ClientRepository;
 import com.sbank.service.UserService;
 import org.springframework.stereotype.Service;
@@ -15,14 +15,12 @@ public class UserServiceImpl implements UserService {
         this.clientRepository = clientRepository;
     }
 
-    public WebUser createClient(User user) {
-        return null;
-        //clientRepository.save(user);
+    public User createClient(User user) {
+        return clientRepository.save(user);
     }
 
     @Override
-    public WebUser getClient(Long clientId) {
-        return null;
-                //clientRepository.findById(clientId).orElse(null);
+    public User getClient(Long clientId) {
+        return clientRepository.findById(clientId).orElse(null);
     }
 }

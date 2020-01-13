@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull
 @Entity
 @Table(name = "transfer")
 internal data class Transfer(
-        @field:NotBlank val currency: Currency,
+        @field:NotNull val currency: Currency? = null,
         @field:NotBlank val fromAccount: String,
         @field:NotBlank val toAccount: String,
         @field:Digits(integer = 24, fraction = 0, message = "Не более 24-х знаков") @field:NotNull
