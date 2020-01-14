@@ -9,7 +9,11 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
 
+    Iterable<Account> findAll();
+
     Account save(Account user);
 
     Optional<Account> findById(Long id);
+
+
 }

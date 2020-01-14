@@ -9,16 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
     UserService userService;
-
-    @GetMapping("/")
-    public String start() {
-
-        return "test";
-    }
 
     @GetMapping("/user/{userId}")
     public @ResponseBody

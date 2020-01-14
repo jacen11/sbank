@@ -10,4 +10,6 @@ public interface AccountService {
     Account updateAccount(Account account);
 
     Account getAccount(Long accountId);
+
+   Iterable<Account> findAll();
 }

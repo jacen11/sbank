@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    {{ message }}
+
+    <table>
+        <tr>
+            <td><input v-model="nameAccount" placeholder="Введите название" type="text"/></td>
+            <td><select v-model="currency" required>
+                <option disabled value="">Выберите валюту</option>
+                <option>USD</option>
+                <option>RUB</option>
+            </select></td>
+            <td>
+                <button v-on:click="createAccount">Создать</button>
+            </td>
+        </tr>
+    </table>
+    {{nameAccount}}
+    {{currency}}
+</div>
+
+<script type="module" src="src/app.js"></script>
+</body>
+</html>

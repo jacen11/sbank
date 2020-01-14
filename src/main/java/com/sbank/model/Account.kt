@@ -8,9 +8,8 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 @Entity
-data class Account(
+internal data class Account(
         @field:NotBlank val name: String,
-        @field:NotNull val number: String,
         @field:NotNull val currency: Currency,
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long? = null)

@@ -1,5 +1,6 @@
 package com.sbank.service;
 
+import com.sbank.exceptions.NotFoundException;
 import com.sbank.model.Account;
 import com.sbank.repostory.AccountRepository;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,13 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account getAccount(Long accountId) {
-        return repo.findById(accountId).orElse(null);
+        return repo.findById(accountId).orElseThrow(NotFoundException::new);
     }
+
+    @Override
+    public Iterable<Account> findAll() {
+        return repo.findAll();
+    }
+
+
 }
