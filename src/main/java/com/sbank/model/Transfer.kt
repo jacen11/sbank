@@ -10,11 +10,11 @@ import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "transfer")
-internal data class Transfer(
+data class Transfer(
         @field:NotNull val currency: Currency? = null,
-        @field:NotBlank val fromAccount: String,
-        @field:NotBlank val toAccount: String,
+        @field:NotBlank val fromAccountId: Long,
+        @field:NotBlank val toAccountId: Long,
         @field:Digits(integer = 24, fraction = 0, message = "Не более 24-х знаков") @field:NotNull
-        val number: BigDecimal,
+        val number: BigDecimal = BigDecimal.ZERO,
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long? = null)
