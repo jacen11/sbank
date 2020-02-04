@@ -19,7 +19,10 @@ class AccountServiceImpl(private val repo: AccountRepository, private val transf
 
     override fun getAccount(accountId: Long): Account {
         val account = repo.findById(accountId).orElseThrow { NotFoundException() }
-        account.amount = transferRepository.findAll().filter { it.toAccountId == account.id }.sumBy { it.number }
+        account.amount = transferRepository
+                .findAll()
+                .filter { it.toAccountId == account.id }
+                .fold(BigDecimal.ZERO) { sum, it -> sum.plus(it.number) }
         return account
     }
 
@@ -28,10 +31,3 @@ class AccountServiceImpl(private val repo: AccountRepository, private val transf
     }
 }
 
-private inline fun <T> Iterable<T>.sumBy(selector: (T) -> BigDecimal): BigDecimal {
-    val sum: BigDecimal = BigDecimal.ZERO
-    for (element in this) {
-        sum.plus(selector(element))
-    }
-    return sum
-}
