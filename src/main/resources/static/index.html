@@ -27,6 +27,14 @@
     </table>
     {{nameAccount}}
     {{currency}}
+
+    <table>
+        <tr v-for="account in accounts">
+            <td>{{account.id}}</td>
+            <td>{{account.name}}</td>
+            <td>{{account.currency}}</td>
+        </tr>
+    </table>
 </div>
 
 <script type="module" src="src/app.js"></script>
