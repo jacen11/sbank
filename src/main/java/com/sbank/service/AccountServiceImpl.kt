@@ -19,15 +19,21 @@ class AccountServiceImpl(private val repo: AccountRepository, private val transf
 
     override fun getAccount(accountId: Long): Account {
         val account = repo.findById(accountId).orElseThrow { NotFoundException() }
-        account.amount = transferRepository
-                .findAll()
-                .filter { it.toAccountId == account.id }
-                .fold(BigDecimal.ZERO) { sum, it -> sum.plus(it.number) }
+        account.amount = getAmount(account)
         return account
     }
 
     override fun findAll(): Iterable<Account> {
-        return repo.findAll()
+        val accounts: MutableIterable<Account> = repo.findAll()
+        accounts.forEach { account -> account.amount = getAmount(account) }
+        return accounts
     }
+
+    private fun getAmount(account: Account) =
+            transferRepository
+                    .findAll()
+                    .filter { it.toAccountId == account.id }
+                    .fold(BigDecimal.ZERO) { sum, it -> sum.plus(it.number) }
+
 }
 
