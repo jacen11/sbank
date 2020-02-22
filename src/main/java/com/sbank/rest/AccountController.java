@@ -2,6 +2,7 @@ package com.sbank.rest;
 
 import com.sbank.model.Account;
 import com.sbank.service.AccountService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Min;
@@ -23,11 +24,14 @@ public class AccountController {
 
     @PostMapping
     public Account createAccount(@RequestBody Account account) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         return accountService.createAccount(account);
     }
 
     @PutMapping
     public Account updateAccount(@RequestBody Account account) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return accountService.updateAccount(account);
     }
 
