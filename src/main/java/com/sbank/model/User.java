@@ -18,6 +18,7 @@ public class User {
     @NotBlank
     private String password;
 
+    @OneToMany
     private List<Account> accountList;
 
     private String name;
