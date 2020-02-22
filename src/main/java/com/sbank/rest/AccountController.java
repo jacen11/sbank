@@ -4,6 +4,8 @@ import com.sbank.model.Account;
 import com.sbank.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Min;
+
 @RestController
 @RequestMapping("/api/account")
 public class AccountController {
@@ -15,7 +17,7 @@ public class AccountController {
     }
 
     @GetMapping("/{id}")
-    public Account getAccount(@PathVariable("id") Long id) {
+    public Account getAccount(@Min(1) @PathVariable("id") Long id) {
         return accountService.getAccount(id);
     }
 

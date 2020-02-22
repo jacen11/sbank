@@ -5,6 +5,7 @@ import com.sbank.service.TransferService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class TransferController {
     }
 
     @GetMapping("/{id}")
-    public     Transfer getTransfer(@Valid @PathVariable("id") Long id) {
+    public     Transfer getTransfer(@Min(1) @PathVariable("id") Long id) {
         return transferService.getTransfer(id);
     }
 
