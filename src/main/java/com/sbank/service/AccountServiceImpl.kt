@@ -32,9 +32,6 @@ class AccountServiceImpl(private val repo: AccountRepository,
 
     private fun getAmount(account: Account) =
             transferRepository
-                    .findAll()
-                    .filter { it.toAccountId == account.id }
+                    .findAllByAccountId(account.id)
                     .fold(BigDecimal.ZERO) { sum, it -> sum.plus(it.number) }
-
 }
-
