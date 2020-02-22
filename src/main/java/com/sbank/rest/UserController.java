@@ -15,13 +15,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/{userId}")
     public @ResponseBody
     User getTestData(@PathVariable Long userId) {
         return userService.getClient(userId);
     }
 
-    @PostMapping("/createUser")
+    @PostMapping
     public User createClient(@Valid User user) {
         return userService.createClient(user);
     }

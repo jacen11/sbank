@@ -5,6 +5,7 @@ import com.sbank.service.TransferService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/transfer")
@@ -16,13 +17,17 @@ public class TransferController {
         this.transferService = transferService;
     }
 
-    @GetMapping("/transfer/{transferId}")
-    public @ResponseBody
-    Transfer getTransfer(@PathVariable @Valid Long transferId) {
-        return transferService.getTransfer(transferId);
+    @GetMapping
+    public List<Transfer> getAllTransfer() {
+        return transferService.getAll();
     }
 
-    @PostMapping("/createTransfer")
+    @GetMapping("/{id}")
+    public     Transfer getTransfer(@Valid @PathVariable("id") Long id) {
+        return transferService.getTransfer(id);
+    }
+
+    @PostMapping
     public Transfer createTransfer(@Valid @RequestBody Transfer transfer) {
         return transferService.createTransfer(transfer);
     }

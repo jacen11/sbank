@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service
 import java.math.BigDecimal
 
 @Service
-class AccountServiceImpl(private val repo: AccountRepository, private val transferRepository: TransferRepository) : AccountService {
+class AccountServiceImpl(private val repo: AccountRepository,
+                         private val transferRepository: TransferRepository) : AccountService {
     override fun createAccount(account: Account): Account {
         return repo.save(account)
     }
