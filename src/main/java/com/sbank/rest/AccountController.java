@@ -1,7 +1,9 @@
 package com.sbank.rest;
 
 import com.sbank.model.Account;
+import com.sbank.model.User;
 import com.sbank.service.AccountService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +25,17 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account createAccount(@RequestBody Account account) {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+    public Account createAccount(@AuthenticationPrincipal User user, @RequestBody Account account) {
+      //  User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(user);
+        System.out.println(user);
+        System.out.println(user);
+        System.out.println(user);
+        System.out.println(user);
+        System.out.println(user);
+        System.out.println(user);
+        System.out.println(user);
+        System.out.println(user);
         return accountService.createAccount(account);
     }
 

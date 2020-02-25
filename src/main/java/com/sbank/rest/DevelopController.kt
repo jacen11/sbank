@@ -13,7 +13,7 @@ class DevelopController(val transferService: TransferService) {
 
     @PutMapping("/refill")
     fun refill(@RequestParam account: Long, @RequestParam number: BigDecimal): Transfer? {
-        val transfer = Transfer(Currency.USD, -1, account, number)
+        val transfer = Transfer(Currency.USD, -1, account,"", number)
         return transferService.createTransfer(transfer)
     }
 
