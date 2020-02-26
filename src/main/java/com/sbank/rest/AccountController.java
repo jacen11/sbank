@@ -26,16 +26,6 @@ public class AccountController {
 
     @PostMapping
     public Account createAccount(@AuthenticationPrincipal User user, @RequestBody Account account) {
-      //  User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
-        System.out.println(user);
-        System.out.println(user);
-        System.out.println(user);
-        System.out.println(user);
-        System.out.println(user);
-        System.out.println(user);
-        System.out.println(user);
-        System.out.println(user);
         return accountService.createAccount(account);
     }
 

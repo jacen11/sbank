@@ -24,7 +24,6 @@ public class UserController {
 
     @PostMapping
     public User createClient(@RequestBody User user) {
-        System.out.println(user.getEmail());
         return userService.createClient(user);
     }
 }

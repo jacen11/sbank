@@ -19,19 +19,19 @@ class SpringSecurityConfig : WebSecurityConfigurerAdapter() {
     @Autowired
     private val passwordEncoder: PasswordEncoder? = null
 
-    val REQ_ACCOUNT = "/api/account/"
+    val REQ_ACCOUNT = "/api/account"
 
     @Throws(Exception::class)
     override fun configure(auth: AuthenticationManagerBuilder) {
-//        auth.userDetailsService(userService)
-//                .passwordEncoder(passwordEncoder)
+        auth.userDetailsService(userService)
+                .passwordEncoder(passwordEncoder)
 
 
-        auth.inMemoryAuthentication()
-                .withUser("user").password(passwordEncoder?.encode("password")).roles(Role.USER.name)
-                .and()
-               // .withUser("admin").password("{noop}password").roles("USER", "ADMIN")
-                .withUser("admin").password(passwordEncoder?.encode("password")).roles("USER", "ADMIN")
+//        auth.inMemoryAuthentication()
+//                .withUser("user").password(passwordEncoder?.encode("password")).roles(Role.USER.name)
+//                .and()
+//               // .withUser("admin").password("{noop}password").roles("USER", "ADMIN")
+//                .withUser("admin").password(passwordEncoder?.encode("password")).roles("USER", "ADMIN")
     }
 
     @Throws(Exception::class)
@@ -39,9 +39,7 @@ class SpringSecurityConfig : WebSecurityConfigurerAdapter() {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "$REQ_ACCOUNT**").hasRole("USER")
-                .antMatchers(HttpMethod.POST, REQ_ACCOUNT).hasRole("USER")
-                .antMatchers(HttpMethod.PUT, "$REQ_ACCOUNT**").hasRole("USER")
+                .antMatchers( "$REQ_ACCOUNT**").hasRole("USER")
                 .and()
                 .csrf().disable()
                 .formLogin().disable()

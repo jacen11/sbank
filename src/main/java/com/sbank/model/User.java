@@ -1,5 +1,6 @@
 package com.sbank.model;
 
+import javax.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,32 +18,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Collections;
+import java.util.List;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 public class User implements UserDetails {
-
-    public User() {
-    }
-
-
-    public User(String username,String password, String email ) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
-
-    public User(Long id, Set<Role> roles, boolean accountNotExpired, boolean accountNotLocked, boolean enabled, List<Account> accountList, String name) {
-        this.id = id;
-        this.roles = roles;
-        this.accountNotExpired = accountNotExpired;
-        this.accountNotLocked = accountNotLocked;
-        this.enabled = enabled;
-        this.accountList = accountList;
-        this.name = name;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -71,7 +54,7 @@ public class User implements UserDetails {
     private boolean enabled = true;
 
     @OneToMany
-    private List<Account> accountList;
+    private Set<Account> accountList;
 
     private String name;
 
@@ -99,11 +82,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public List<Account> getAccountList() {
+    public Set<Account> getAccountList() {
         return accountList;
     }
 
-    public void setAccountList(List<Account> accountList) {
+    public void setAccountList(Set<Account> accountList) {
         this.accountList = accountList;
     }
 
