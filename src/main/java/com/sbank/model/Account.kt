@@ -14,5 +14,6 @@ data class Account(
         @field:NotNull val currency: Currency,
         var amount: BigDecimal = BigDecimal.ZERO,
         var cardId: Int? = null,
+//        val user: User,
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long? = null)

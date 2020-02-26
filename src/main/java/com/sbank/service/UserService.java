@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    User createClient(User user);
+    User createUser(User user);
 
-    User getClient(Long clientId);
+    User getUser(Long clientId);
 }

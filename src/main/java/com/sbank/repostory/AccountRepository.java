@@ -15,5 +15,4 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
     Optional<Account> findById(Long id);
 
-
 }

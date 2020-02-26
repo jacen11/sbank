@@ -2,7 +2,7 @@ package com.sbank.service;
 
 import com.sbank.model.Role;
 import com.sbank.model.User;
-import com.sbank.repostory.ClientRepository;
+import com.sbank.repostory.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,20 +14,21 @@ import java.util.Collections;
 @Service
 public class UserServiceImpl implements UserService,  UserDetailsService {
 
-    private final ClientRepository clientRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(ClientRepository clientRepository,
+    public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder) {
-        this.clientRepository = clientRepository;
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User createClient(User user) {
+    public User createUser(User user) {
 
-        User userFromDb = clientRepository.findByUsername(user.getUsername());
+        User userFromDb = userRepository.findByUsername(user.getUsername());
 
         if (userFromDb != null) {
+            //todo подумать что возвращать когда имя такое уже есть
             return new User();
         }
 
@@ -36,17 +37,17 @@ public class UserServiceImpl implements UserService,  UserDetailsService {
 
         //TODO отправка сообщения на почту
 
-        return clientRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Override
-    public User getClient(Long clientId) {
-        return clientRepository.findById(clientId).orElse(null);
+    public User getUser(Long clientId) {
+        return userRepository.findById(clientId).orElse(new User());
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = clientRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException("User not found");

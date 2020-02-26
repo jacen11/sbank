@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AccountService {
-    Account createAccount(Account account);
+    Account createAccount(Long user, Account account);
 
     Account updateAccount(Account account);
 
-    Account getAccount(Long accountId);
+    Account getAccount(Long id, Long accountId);
 
    Iterable<Account> findAll();
 }

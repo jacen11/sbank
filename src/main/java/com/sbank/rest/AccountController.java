@@ -20,18 +20,19 @@ public class AccountController {
     }
 
     @GetMapping("/{id}")
-    public Account getAccount(@Min(1) @PathVariable("id") Long id) {
-        return accountService.getAccount(id);
+    public Account getAccount(@AuthenticationPrincipal User user,
+                              @Min(1) @PathVariable("id") Long id) {
+        return accountService.getAccount(user.getId(), id);
     }
 
     @PostMapping
-    public Account createAccount(@AuthenticationPrincipal User user, @RequestBody Account account) {
-        return accountService.createAccount(account);
+    public Account createAccount(@AuthenticationPrincipal User user,
+                                 @RequestBody Account account) {
+        return accountService.createAccount(user.getId(), account);
     }
 
     @PutMapping
     public Account updateAccount(@RequestBody Account account) {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return accountService.updateAccount(account);
     }
 

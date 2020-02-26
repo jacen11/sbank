@@ -1,12 +1,10 @@
 package com.sbank.rest;
 
 import com.sbank.model.User;
-import com.sbank.model.User;
 import com.sbank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 @RestController
@@ -19,11 +17,11 @@ public class UserController {
     @GetMapping("/{userId}")
     public @ResponseBody
     User getTestData(@Min(1) @PathVariable Long userId) {
-        return userService.getClient(userId);
+        return userService.getUser(userId);
     }
 
     @PostMapping
     public User createClient(@RequestBody User user) {
-        return userService.createClient(user);
+        return userService.createUser(user);
     }
 }
