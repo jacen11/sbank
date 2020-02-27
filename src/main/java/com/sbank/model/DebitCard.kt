@@ -6,5 +6,5 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class DebitCard(override val id:Long?=null,
-                     var name:String? = null) : Card(id)
+data class DebitCard(override val id:Long?=null
+                     ) : Card(id)

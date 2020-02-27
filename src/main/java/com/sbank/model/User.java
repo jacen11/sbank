@@ -1,6 +1,8 @@
 package com.sbank.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -37,6 +39,7 @@ public class User implements UserDetails {
     private String username;
 
     @NotBlank(message = "Password cannot be empty")
+    //@JsonIgnore
     private String password;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -51,8 +54,8 @@ public class User implements UserDetails {
 
     private boolean enabled = true;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Account> accountList;
+//    @OneToMany(mappedBy = "user")
+//    private Set<Account> accountList;
 
     private String name;
 
@@ -80,17 +83,17 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public Set<Account> getAccountList() {
-        return accountList;
-    }
-
-    public void setAccountList(Set<Account> accountList) {
-        this.accountList = accountList;
-    }
-
-    public void addAccount(Account account) {
-        accountList.add(account);
-    }
+//    public Set<Account> getAccountList() {
+//        return accountList;
+//    }
+//
+//    public void setAccountList(Set<Account> accountList) {
+//        this.accountList = accountList;
+//    }
+//
+//    public void addAccount(Account account) {
+//        accountList.add(account);
+//    }
 
 
     public void setEnabled(boolean enabled) {

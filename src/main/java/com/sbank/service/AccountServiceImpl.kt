@@ -1,9 +1,6 @@
 package com.sbank.service
 
-import com.sbank.exceptions.NotFoundException
 import com.sbank.model.Account
-import com.sbank.model.Currency
-import com.sbank.model.User
 import com.sbank.repostory.AccountRepository
 import com.sbank.repostory.UserRepository
 import com.sbank.repostory.TransferRepository
@@ -17,23 +14,16 @@ class AccountServiceImpl(private val repo: AccountRepository,
                          private val userRepository: UserRepository) : AccountService {
     @Transactional
     override fun createAccount(userId: Long, account: Account): Account? {
-        val user: User = userRepository.findById(userId).get()
-        val save: Account = repo.save(account)
-        user.accountList.add(account)
-        return save
+        account.user = userRepository.findById(userId).get()
+        return repo.save(account)
     }
 
     override fun updateAccount(account: Account): Account {
         return repo.save(account)
     }
 
-    override fun getAccount(userId: Long, accountId: Long): Account {
-        val user: User = userRepository.findById(userId).get()
-        val account = user.accountList.find { it.id == accountId }
-                ?: Account(name = "", currency = Currency.NONE, cardId = null)
-        //  val account = repo.findById(accountId).orElseThrow { NotFoundException() }
-        account.amount =  getAmount(account)
-        return account
+    override fun getAccount(userId: Long, accountId: Long): Account? {
+        return repo.findByIdAndUserId(accountId, userId).get()
     }
 
     override fun findAll(): Iterable<Account> {

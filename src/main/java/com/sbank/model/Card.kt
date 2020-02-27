@@ -4,4 +4,5 @@ import javax.persistence.*
 
 @MappedSuperclass
 abstract class Card(@Id @GeneratedValue(strategy = GenerationType.AUTO)
-                    open val id: Long? = null)
+                    open val id: Long? = null,
+                    var name:String? = null)
