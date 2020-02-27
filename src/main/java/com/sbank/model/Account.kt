@@ -1,10 +1,7 @@
 package com.sbank.model
 
 import java.math.BigDecimal
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
@@ -14,6 +11,7 @@ data class Account(
         @field:NotNull val currency: Currency,
         var amount: BigDecimal = BigDecimal.ZERO,
         var cardId: Int? = null,
-//        val user: User,
+        @field:ManyToOne
+        val user: User? = null,
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long? = null)

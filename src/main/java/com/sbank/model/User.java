@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "usr")
 public class User implements UserDetails {
 
     @Id
@@ -47,13 +48,10 @@ public class User implements UserDetails {
     @NotBlank(message = "Email cannot be empty")
     private String email;
 
-    private boolean accountNotExpired = true;
-
-    private boolean accountNotLocked = true;
 
     private boolean enabled = true;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private Set<Account> accountList;
 
     private String name;
@@ -94,13 +92,6 @@ public class User implements UserDetails {
         accountList.add(account);
     }
 
-    public void setAccountNotExpired(boolean accountNotExpired) {
-        this.accountNotExpired = accountNotExpired;
-    }
-
-    public void setAccountNotLocked(boolean accountNotLocked) {
-        this.accountNotLocked = accountNotLocked;
-    }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
@@ -132,12 +123,12 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return accountNotExpired;
+        return enabled;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return accountNotLocked;
+        return enabled;
     }
 
     @Override

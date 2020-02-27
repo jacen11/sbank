@@ -28,7 +28,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-security:2.2.4.RELEASE'
 
-	implementation 'postgresql:postgresql:9.1-901-1.jdbc4'
+	implementation 'org.postgresql:postgresql:42.2.10'
 }
 
 test {
