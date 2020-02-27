@@ -26,8 +26,8 @@ class AccountServiceImpl(private val repo: AccountRepository,
         return repo.findByIdAndUserId(accountId, userId).get()
     }
 
-    override fun findAll(): Iterable<Account> {
-        val accounts: MutableIterable<Account> = repo.findAll()
+    override fun findAll(id: Long): Iterable<Account>? {
+        val accounts: MutableIterable<Account> = repo.findAllByUserId(id)
         accounts.forEach { account -> account.amount = getAmount(account) }
         return accounts
     }

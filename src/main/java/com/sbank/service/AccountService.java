@@ -11,5 +11,5 @@ public interface AccountService {
 
     Account getAccount(Long id, Long accountId);
 
-   Iterable<Account> findAll();
+   Iterable<Account> findAll(Long id);
 }

@@ -13,6 +13,8 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
     Iterable<Account> findAll();
 
+    Iterable<Account>  findAllByUserId(Long userId);
+
     Account save(Account user);
 
     Optional<Account> findById(Long id);

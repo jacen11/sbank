@@ -37,7 +37,7 @@ public class AccountController {
     }
 
     @GetMapping
-    public Iterable<Account> findAll() {
-        return accountService.findAll();
+    public Iterable<Account> findAll(@AuthenticationPrincipal User user) {
+        return accountService.findAll(user.getId());
     }
 }
